@@ -15,6 +15,7 @@ export default {
   "menu.QuanLyHoSoSinhVien": "Hồ sơ sinh viên",
   "menu.QuanLyDangKyPhongKTX": "Đăng ký phòng KTX",
   "menu.QuanLyThongTinVaDichVu": "Thông tin và dịch vụ",
+  "menu.QuanLyVaoRaKTX": "Khách",
   "menu.QuanLyVeXeThang": "Vé xe",
   "menu.QuanLyGuiXe": "Gửi xe",
   "menu.QuanLyHoaDon": "Hoá đơn",

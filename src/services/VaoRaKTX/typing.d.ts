@@ -1,8 +1,9 @@
-declare module QuanLyHoaDon {
+declare module VaoRaKTX {
   export interface IRecord {
-    soLuong: number;
     _id: string;
-    donGia: number;
+    cmtCccd: string;
+    hoTen: string;
+    ngaySinh: string;
     idSinhVien: {
       _id: string;
       username: string;
@@ -20,23 +21,14 @@ declare module QuanLyHoaDon {
         _id: string;
       };
     };
-    idSource: string;
-    loaiHoaDon: string;
-    thanhTien: number;
-    thang: number;
-    nam: number;
-    trangThaiThanhToan: string;
+    ngayDen: string;
     createdAt: string;
     updatedAt: string;
     __v: 0;
   }
 
   export interface IThongKe {
-    dichVu: number;
-    thuePhong: number;
-    veXe: number;
-    guiXe: number;
-    sinhVien: {
+    thongTinSinhVien: {
       _id: string;
       username: string;
       password: string;
@@ -51,5 +43,13 @@ declare module QuanLyHoaDon {
         version: 0;
       };
     };
+    danhSachKhach: [
+      {
+        hoTen: string;
+        cmtCccd: string;
+        ngaySinh: string;
+        soLanDen: 2;
+      }
+    ];
   }
 }

@@ -83,6 +83,7 @@ axios.interceptors.response.use(
 
 				case 401:
 					if (originalRequest._retry) break;
+					localStorage.clear()
 					break;
 				// return routeLogin('Unauthorize');
 

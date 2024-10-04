@@ -100,6 +100,10 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
         //   )
         // )
         //   history.replace("/403");
+      } else {
+        if (!localStorage.getItem("token")) {
+          history.push("/user/login");
+        }
       }
     },
 

@@ -1,6 +1,6 @@
 import rules from "@/utils/rules";
 import { resetFieldsForm } from "@/utils/utils";
-import { Button, Card, Col, Form, InputNumber, Row } from "antd";
+import {Button, Card, Col, Form, InputNumber, Row, Select} from "antd";
 import moment from "moment";
 import { useEffect } from "react";
 import { useModel } from "umi";
@@ -48,6 +48,7 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
     setFormSubmiting(false);
     const data = {
       ...values,
+      thang:+values?.thang -1
     };
 
     if (edit) {
@@ -99,12 +100,32 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
           </Col>
           <Col span={12}>
             <Form.Item label="Tháng" name="thang" rules={[...rules.required]}>
-              <InputNumber style={{ width: "100%" }} disabled={isView} />
+              <Select
+                style={{ width: '100%', marginRight: 8 }}
+                placeholder={"Chọn tháng"}
+                options={Array.from(
+                  { length: 12 },
+                  (_, index) => index + 1
+                )?.map((val) => ({
+                  value: val,
+                  label: `Tháng ${val}`,
+                }))}
+              />
             </Form.Item>
           </Col>
           <Col span={12}>
             <Form.Item label="Năm" name="nam" rules={[...rules.required]}>
-              <InputNumber style={{ width: "100%" }} disabled={isView} />
+              <Select
+                style={{ width: '100%', marginRight: 8 }}
+                placeholder={"Chọn năm"}
+                options={Array.from(
+                  { length: moment().year()+1 - 2020 },
+                  (_, i) => 2020 + i
+                )?.map((val) => ({
+                  value: val,
+                  label: `Năm ${val}`,
+                }))}
+              />
             </Form.Item>
           </Col>
         </Row>

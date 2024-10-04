@@ -72,12 +72,11 @@ const QuanLyDangKyPhongKTXPage = () => {
     <>
       <TableBase
         getData={getData}
-        title={"Quản lý đăng ký phòng KTX"}
+        title={"Đăng ký phòng KTX"}
         modelName={"quanlydangkyphongktx"}
         columns={columns}
         Form={FormThemMoi as any}
         formProps={{
-          title:'Sinh viên',
           getData:getData
         }}
         widthDrawer={700}

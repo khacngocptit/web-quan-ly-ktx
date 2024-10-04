@@ -1,25 +1,24 @@
 import { useModel } from "umi";
 import TableBase from "@/components/Table";
 import { IColumn } from "@/components/Table/typing";
-import moment from "moment/moment";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import ButtonExtend from "@/components/Table/ButtonExtend";
 import { Popconfirm } from "antd";
 import FormThemMoi from "./components/FormThemMoi";
-import { QuanLyThongTinVaDichVu } from "@/services/QuanLyThongTinVaDichVu/typing";
+import moment from "moment";
 
-const QuanLyThongTinVaDichVuPage = () => {
+const QuanLyVaoRaKTXPage = () => {
   const { getModel, handleEdit, handleView, deleteModel } = useModel(
-    "quanlythongtinvadichvu"
+    "quanlyvaoraktx"
   );
 
   const getData = () => {
     getModel();
   };
 
-  const columns: IColumn<QuanLyThongTinVaDichVu.IRecord>[] = [
+  const columns: IColumn<VaoRaKTX.IRecord>[] = [
     {
-      title: "Họ và tên",
+      title: "Chủ phòng",
       width: 120,
       render: (val, rec) =>
         `${rec?.idSinhVien?.hoDem ?? ""} ${rec?.idSinhVien?.ten}`,
@@ -31,26 +30,24 @@ const QuanLyThongTinVaDichVuPage = () => {
       render: (val, rec) => `${rec?.idSinhVien?.cmtCccd ?? ""}`,
     },
     {
-      title: "Dịch vụ đăng ký",
+      title: "Khách",
+      dataIndex:'hoTen',
       align: "center",
       width: 120,
-      render: (val, rec) => `${rec?.idDichVu?.tenDichVu ?? ""}`,
     },
     {
-      title: "Thời gian bắt đầu sử dụng",
+      title: "CMT/CCCD Khách",
       align: "center",
-      dataIndex: "thoiGianBatDauSuDung",
+      dataIndex: "cmtCccd",
       width: 120,
-      render: (val, rec) => (val ? `${moment(val).format("DD/MM/YYYY")}` : ""),
     },
     {
-      title: "Thời gian kết thúc sử dụng",
+      title: "Ngày đến",
       align: "center",
-      dataIndex: "thoiGianKetThucSuDung",
+      dataIndex: "ngayDen",
       width: 120,
-      render: (val, rec) => (val ? `${moment(val).format("DD/MM/YYYY")}` : ""),
+      render:(val)=>val?moment(val).format('DD/MM/YYYY'):''
     },
-
     {
       title: "Thao tác",
       align: "center",
@@ -90,12 +87,11 @@ const QuanLyThongTinVaDichVuPage = () => {
     <>
       <TableBase
         getData={getData}
-        title={"Thông tin và dịch vụ"}
-        modelName={"quanlythongtinvadichvu"}
+        title={"Khách vào ra KTX"}
+        modelName={"quanlyvaoraktx"}
         columns={columns}
         Form={FormThemMoi as any}
         formProps={{
-          title: "Dịch vụ",
           getData: getData,
         }}
         widthDrawer={700}
@@ -103,4 +99,4 @@ const QuanLyThongTinVaDichVuPage = () => {
     </>
   );
 };
-export default QuanLyThongTinVaDichVuPage;
+export default QuanLyVaoRaKTXPage;

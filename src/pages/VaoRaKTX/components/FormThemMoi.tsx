@@ -1,12 +1,12 @@
 import rules from "@/utils/rules";
 import { resetFieldsForm } from "@/utils/utils";
-import { Button, Card, Col, Form, InputNumber, Row, Select } from "antd";
+import { Button, Card, Col, Form, Input, Row } from "antd";
 import moment from "moment";
 import { useEffect } from "react";
 import { useModel } from "umi";
 import { HoSoSinhVien } from "@/services/QuanLyHoSoSinhVien/typing";
-import SelectPhongKTX from "@/pages/DanhMuc/PhongKTX/components/Select";
 import SelectSinhVien from "@/pages/QuanLyHoSoSinhVien/components/Select";
+import SelectXeKTX from "@/pages/DanhMuc/QuanLyXe/components/Select";
 import MyDatePicker from "@/components/MyDatePicker";
 
 const FormThemMoi = (props: { title: string; getData?: () => void }) => {
@@ -22,7 +22,8 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
     postModel,
     setFormSubmiting,
     isView,
-  } = useModel("quanlydangkyphongktx");
+  } = useModel("quanlyvaoraktx");
+  const idSinhVien = Form.useWatch("idSinhVien", form);
 
   useEffect(() => {
     if (!visibleForm) {
@@ -31,7 +32,7 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
       form.setFieldsValue({
         ...record,
         idSinhVien: record?.idSinhVien?._id,
-        idPhong: record?.idPhong?._id,
+        idXe: record?.idXe?._id,
       });
     } else {
       form.setFieldsValue({
@@ -48,7 +49,6 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
     setFormSubmiting(false);
     const data = {
       ...values,
-      thang: +values?.thang - 1,
     };
 
     if (edit) {
@@ -66,27 +66,9 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
       <Form onFinish={onFinish} form={form} layout="vertical">
         <Row gutter={16}>
           <Col span={24}>
-            <Form.Item name="phong" hidden />
-            <Form.Item
-              label="Phòng"
-              name="idPhong"
-              rules={[...rules.required, ...rules.text, ...rules.length(200)]}
-            >
-              <SelectPhongKTX
-                disabled={isView}
-                onChange={(val, option) => {
-                  const rawData = option?.rawData;
-                  form.setFieldsValue({
-                    phong: rawData,
-                  });
-                }}
-              />
-            </Form.Item>
-          </Col>
-          <Col span={24}>
             <Form.Item name="sinhvien" hidden />
             <Form.Item
-              label="Sinh viên"
+              label="Gặp sinh viên"
               name="idSinhVien"
               rules={[...rules.required]}
             >
@@ -102,33 +84,45 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label="Tháng" name="thang" rules={[...rules.required]}>
-              <Select
-                style={{ width: '100%', marginRight: 8 }}
-                placeholder={"Chọn tháng"}
-                options={Array.from(
-                  { length: 12 },
-                  (_, index) => index + 1
-                )?.map((val) => ({
-                  value: val,
-                  label: `Tháng ${val}`,
-                }))}
-              />
+            <Form.Item
+              label="Họ và tên"
+              name="hoTen"
+              rules={[...rules.required]}
+            >
+              <Input placeholder={"Họ và tên"} />
+            </Form.Item>
+          </Col>{" "}
+          <Col span={12}>
+            <Form.Item
+              label="CMT/CCCD"
+              name="cmtCccd"
+              rules={[...rules.required]}
+            >
+              <Input placeholder={"CMT/CCCD"}   disabled={isView} />
+            </Form.Item>
+          </Col>
+          {/*<Col span={12}>*/}
+          {/*  <Form.Item label="Tháng" name="thang" rules={[...rules.required]}>*/}
+          {/*    <InputNumber style={{ width: "100%" }} disabled={isView} />*/}
+          {/*  </Form.Item>*/}
+          {/*</Col>*/}
+          {/*<Col span={12}>*/}
+          {/*  <Form.Item label="Năm" name="nam" rules={[...rules.required]}>*/}
+          {/*    <InputNumber style={{ width: "100%" }} disabled={isView} />*/}
+          {/*  </Form.Item>*/}
+          {/*</Col> */}
+          <Col span={12}>
+            <Form.Item label="Ngày sinh" name="ngaySinh">
+              <MyDatePicker disabled={isView} />
             </Form.Item>
           </Col>
           <Col span={12}>
-            <Form.Item label="Năm" name="nam" rules={[...rules.required]}>
-              <Select
-                style={{ width: '100%', marginRight: 8 }}
-                placeholder={"Chọn năm"}
-                options={Array.from(
-                  { length: moment().year()+1 - 2020 },
-                  (_, i) => 2020 + i
-                )?.map((val) => ({
-                  value: val,
-                  label: `Năm ${val}`,
-                }))}
-              />
+            <Form.Item
+              label="Ngày đến"
+              name="ngayDen"
+              rules={[...rules.required]}
+            >
+              <MyDatePicker disabled={isView} />
             </Form.Item>
           </Col>
         </Row>

@@ -145,7 +145,7 @@ const QuanLyHoaDonPage = () => {
     <>
       <TableBase
         getData={getData}
-        title={"Quản lý hoá đơn"}
+        title={"Hoá đơn"}
         modelName={"quanlyhoadon"}
         columns={columns}
         dependencies={[currentThang, currentNam, page, limit, condition]}

@@ -86,7 +86,7 @@ const QuanLyVeXeThangPage = () => {
     <>
       <TableBase
         getData={getData}
-        title={"Quản lý vé xe tháng"}
+        title={"Vé xe tháng"}
         modelName={"quanlyvexe"}
         columns={columns}
         Form={FormThemMoi as any}

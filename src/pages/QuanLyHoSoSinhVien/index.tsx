@@ -97,7 +97,7 @@ const QuanLyHoSinhVienPage = () => {
     <>
       <TableBase
         getData={getData}
-        title={"Quản lý hồ sơ sinh viên"}
+        title={"Hồ sơ sinh viên"}
         modelName={"quanlyhososinhvien"}
         columns={columns}
         Form={FormThemMoi as any}

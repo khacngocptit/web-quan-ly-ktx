@@ -58,6 +58,11 @@
 		path: '/quan-ly-dang-ky-phong-ktx',
 		icon: 'HomeOutlined',
 		component: './QuanLyDangKyPhongKTX'
+	},{
+		name: 'QuanLyVaoRaKTX',
+		path: '/quan-ly-vao-ra-ktx',
+		icon: 'HomeOutlined',
+		component: './VaoRaKTX'
 	},
 
 	{
