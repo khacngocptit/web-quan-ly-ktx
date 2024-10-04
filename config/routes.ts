@@ -49,31 +49,65 @@
 	{
 		name: 'QuanLyHoSoSinhVien',
 		path: '/quan-ly-ho-so-sinh-vien',
-		icon: 'copy',
+		icon: 'user',
 		component: './QuanLyHoSoSinhVien'
 	},
 
 	{
 		name: 'QuanLyDangKyPhongKTX',
 		path: '/quan-ly-dang-ky-phong-ktx',
-		icon: 'copy',
+		icon: 'HomeOutlined',
 		component: './QuanLyDangKyPhongKTX'
 	},
 
 	{
 		name: 'QuanLyThongTinVaDichVu',
 		path: '/quan-ly-thong-tin-dich-vu',
-		icon: 'copy',
+		icon: 'PropertySafetyOutlined',
 		component: './QuanLyThongTinVaDichVu'
 	},
 
 	{
 		name: 'QuanLyVeXeThang',
 		path: '/quan-ly-ve-xe-thang',
-		icon: 'copy',
+		icon: 'TagOutlined',
 		component: './QuanLyVeXeThang'
 	},
+	{
+		name: 'QuanLyGuiXe',
+		path: '/quan-ly-gui-xe',
+		icon: 'CarOutlined',
+		component: './QuanLyGuiXe'
+	},
+	{
+		name: 'QuanLyHoaDon',
+		path: '/quan-ly-hoa-don',
+		icon: 'AuditOutlined',
+		component: './QuanLyHoaDon'
+	},
 
+	// DANH MUC HE THONG
+	{
+		name: 'DanhMuc',
+		path: '/danh-muc',
+		icon: 'copy',
+		routes: [
+			{
+				name: 'PhongKTX',
+				path: 'phong-ktx',
+				component: './DanhMuc/PhongKTX',
+			},
+			{
+				name: 'DichVuKTX',
+				path: 'dich-vu-ktx',
+				component: './DanhMuc/DichVuKTX',
+			},{
+				name: 'QuanLyXe',
+				path: 'xe-ktx',
+				component: './DanhMuc/QuanLyXe',
+			},
+		],
+	},
 
 	{
 		path: '/notification',

@@ -1,43 +1,47 @@
-import type { ESourceTypeNotification, EReceiverType, ENotificationSource } from './constant';
+import type {
+  ESourceTypeNotification,
+  EReceiverType,
+  ENotificationSource,
+} from "./constant";
 
 declare module DangKyPhongKTX {
-	export interface IRecord {
-		_id: string;
-		title: string;
-		senderName: string;
-		sender?: string;
-		description?: string;
-		content?: string;
-		imageUrl?: string;
+  export interface IRecord {
+    _id: string;
+    idPhong: {
+      _id: string;
+      soPhong: string;
+      loaiPhong: string;
+      soNguoiToiDa: number;
+      donGia: number;
+    };
+    idSinhVien: {
+      _id: string;
+      username: string;
+      password: string;
+      hoDem: string;
+      ten: string;
+      cmtCccd: string;
+      ngaySinh: string;
+      lop: string;
+      queQuan: string;
+      systemRole: string;
+      authorizationVersion: {
+        props: [];
+        version: number;
+        _id: string;
+      };
+    };
+    thang: number;
+    nam: number;
+    createdAt: string;
+    updatedAt: string;
+    __v: 0;
+  }
 
-		filter?: {
-			roles: EVaiTroBieuMau[];
-			idKhoaSinhVien: string;
-			idKhoa: string;
-			idNganh: string;
-			idLopHanhChinh: string;
-			idLopTinChi: string;
-		};
-		receiverType: EReceiverType;
-		users?: string[];
-
-		// oneSignalData?: any;
-		taiLieuDinhKem?: string[];
-		createdAt: string; // '2023-06-27T07:47:29.693Z';
-		read: boolean;
-
-		sourceType?: ESourceTypeNotification;
-		targetType?: ESourceTypeNotification;
-		notificationInternal: boolean;
-		thoiGianHieuLuc: Date;
-
-		metadata?: TNotificationSource;
-	}
-
-	export type TNotificationSource = {
-		entityId?: string;
-		entitySource?: ENotificationSource;
-		pathWeb?: string;
-		phanHe?: ESourceTypeNotification;
-	} & Record<string, any>;
+  export type TNotificationSource = {
+    entityId?: string;
+    entitySource?: ENotificationSource;
+    pathWeb?: string;
+    phanHe?: ESourceTypeNotification;
+  } & Record<string, any>;
 }

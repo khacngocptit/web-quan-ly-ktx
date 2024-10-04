@@ -3,7 +3,7 @@ import { FileWordOutlined, GlobalOutlined, LogoutOutlined, UserOutlined } from '
 import { Avatar, Menu, Spin } from 'antd';
 import { type ItemType } from 'antd/lib/menu/hooks/useItems';
 import React from 'react';
-import { useModel } from 'umi';
+import { useModel,history } from 'umi';
 import { OIDCBounder } from '../OIDCBounder';
 import HeaderDropdown from './HeaderDropdown';
 import styles from './index.less';
@@ -15,7 +15,11 @@ export type GlobalHeaderRightProps = {
 const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 	const { initialState } = useModel('@@initialState');
 
-	const loginOut = () => OIDCBounder?.getActions()?.dangXuat();
+	// const loginOut = () => OIDCBounder?.getActions()?.dangXuat();
+	const loginOut = () => {
+		localStorage.clear()
+		history.push('/user/login');
+	};
 
 	if (!initialState || !initialState.currentUser)
 		return (
@@ -33,7 +37,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 		{
 			key: 'name',
 			icon: <UserOutlined />,
-			label: fullName,
+			label: initialState?.currentUser?.username,
 		},
 		// {
 		// 	key: 'password',
@@ -44,19 +48,19 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 		// 		window.location.href = `${keycloakAuthEndpoint}?client_id=${AppModules[currentRole].clientId}&redirect_uri=${redirect}&response_type=code&scope=openid&kc_action=UPDATE_PASSWORD`;
 		// 	},
 		// },
-		{
-			key: 'office',
-			icon: <FileWordOutlined />,
-			label: 'Office 365',
-			onClick: () => window.open('https://office.com/'),
-		},
-		{
-			key: 'portal',
-			icon: <GlobalOutlined />,
-			label: APP_CONFIG_TITLE_LANDING ?? 'Cổng thông tin',
-			onClick: () => window.open(landingUrl),
-		},
-		{ type: 'divider', key: 'divider' },
+		// {
+		// 	key: 'office',
+		// 	icon: <FileWordOutlined />,
+		// 	label: 'Office 365',
+		// 	onClick: () => window.open('https://office.com/'),
+		// },
+		// {
+		// 	key: 'portal',
+		// 	icon: <GlobalOutlined />,
+		// 	label: APP_CONFIG_TITLE_LANDING ?? 'Cổng thông tin',
+		// 	onClick: () => window.open(landingUrl),
+		// },
+		// { type: 'divider', key: 'divider' },
 		{
 			key: 'logout',
 			icon: <LogoutOutlined />,
@@ -92,7 +96,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 						icon={!initialState.currentUser?.picture ? lastNameChar ?? <UserOutlined /> : undefined}
 						alt='avatar'
 					/>
-					<span className={`${styles.name}`}>{fullName}</span>
+					<span className={`${styles.name}`}>{initialState?.currentUser?.username}</span>
 				</span>
 			</HeaderDropdown>
 		</>

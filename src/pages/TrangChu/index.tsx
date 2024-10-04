@@ -6,8 +6,8 @@ const TrangChu = () => {
 	return (
 		<Card bodyStyle={{ height: '100%' }}>
 			<div className='home-welcome'>
-				<h1 className='title'>PHÂN HỆ QUẢN LÝ ĐÀO TẠO</h1>
-				<h2 className='sub-title'>HỆ THỐNG PHẦN MỀM CHỈ ĐẠO, ĐIỀU HÀNH - {unitName.toUpperCase()}</h2>
+				<h1 className='title'>QUẢN LÝ KÝ TÚC XÁ</h1>
+				<h2 className='sub-title'>HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</h2>
 			</div>
 		</Card>
 	);

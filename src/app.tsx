@@ -10,14 +10,12 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { OIDCBounder } from "./components/OIDCBounder";
 import { unCheckPermissionPaths } from "./components/OIDCBounder/constant";
 import OneSignalBounder from "./components/OneSignalBounder";
-import HeaderContentPage from "./components/RightContent/Header";
 import TechnicalSupportBounder from "./components/TechnicalSupportBounder";
 import NotAccessible from "./pages/exception/403";
 import NotFoundContent from "./pages/exception/404";
 import type { IInitialState } from "./services/base/typing";
 import "./styles/global.less";
 import { currentRole } from "./utils/ip";
-import axios from "@/utils/axios";
 
 /**  loading */
 export const initialStateConfig = {
@@ -70,21 +68,16 @@ export const request: RequestConfig = {
   requestInterceptors: [authHeaderInterceptor],
 };
 
-axios.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('token')}`;
-
 // ProLayout  https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     unAccessible: (
-      // <OIDCBounder>
       <TechnicalSupportBounder>
         <NotAccessible />
       </TechnicalSupportBounder>
-      // </OIDCBounder>
     ),
     noFound: <NotFoundContent />,
     rightContentRender: () => <RightContent />,
-    headerContentRender: () => <HeaderContentPage />,
     disableContentMargin: false,
 
     footerRender: () => <Footer />,
@@ -92,17 +85,21 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     onPageChange: () => {
       if (initialState?.currentUser) {
         // const { location } = history;
-        // const isUncheckPath = unCheckPermissionPaths.some((path) => window.location.pathname.includes(path));
+        // const isUncheckPath = unCheckPermissionPaths.some((path) =>
+        //   window.location.pathname.includes(path)
+        // );
         //
-        // if (location.pathname === '/') {
-        // 	history.replace('/dashboard');
+        // if (location.pathname === "/") {
+        //   history.replace("/dashboard");
         // } else if (
-        // 	!isUncheckPath &&
-        // 	currentRole &&
-        // 	initialState?.authorizedPermissions?.length &&
-        // 	!initialState?.authorizedPermissions?.find((item) => item.rsname === currentRole)
+        //   !isUncheckPath &&
+        //   currentRole &&
+        //   initialState?.authorizedPermissions?.length &&
+        //   !initialState?.authorizedPermissions?.find(
+        //     (item) => item.rsname === currentRole
+        //   )
         // )
-        // 	history.replace('/403');
+        //   history.replace("/403");
       }
     },
 

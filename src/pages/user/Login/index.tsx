@@ -88,7 +88,7 @@ const Login: React.FC = () => {
 				<div className={styles.top}>
 					<div className={styles.header}>
 						<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-							<img alt='logo' className={styles.logo} src='/logo-full-white.svg' />
+							<img alt='logo' style={{width:200}} className={styles.logo} src='/logo.png' />
 						</div>
 					</div>
 				</div>
