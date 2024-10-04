@@ -106,6 +106,12 @@ const ThongKeSuDungDichVuPage = () => {
       render: (val, rec) => `${rec?.thongTinDichVu?.tenDichVu ?? ""}`,
     },
     {
+      title: "Tháng",
+      width: 120,
+      align: "center",
+      render: (val, rec) => `${rec?.thang ?? ""}`,
+    },
+    {
       title: "Doanh thu",
       width: 120,
       align: "center",

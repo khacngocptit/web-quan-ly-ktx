@@ -26,6 +26,8 @@ Scripts provided in `package.json`. It's safe to modify or add additional script
 ### Start project
 
 ```bash
+nvm install 16
+nvm use 16
 yarn start
 ```
 
