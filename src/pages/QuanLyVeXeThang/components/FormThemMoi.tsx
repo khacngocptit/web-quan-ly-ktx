@@ -101,6 +101,7 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
           <Col span={12}>
             <Form.Item label="Tháng" name="thang" rules={[...rules.required]}>
               <Select
+                disabled={isView}
                 style={{ width: '100%', marginRight: 8 }}
                 placeholder={"Chọn tháng"}
                 options={Array.from(
@@ -116,6 +117,7 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
           <Col span={12}>
             <Form.Item label="Năm" name="nam" rules={[...rules.required]}>
               <Select
+                disabled={isView}
                 style={{ width: '100%', marginRight: 8 }}
                 placeholder={"Chọn năm"}
                 options={Array.from(

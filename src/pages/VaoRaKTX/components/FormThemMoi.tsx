@@ -89,7 +89,7 @@ const FormThemMoi = (props: { title: string; getData?: () => void }) => {
               name="hoTen"
               rules={[...rules.required]}
             >
-              <Input placeholder={"Họ và tên"} />
+              <Input placeholder={"Họ và tên"} disabled={isView} />
             </Form.Item>
           </Col>{" "}
           <Col span={12}>
