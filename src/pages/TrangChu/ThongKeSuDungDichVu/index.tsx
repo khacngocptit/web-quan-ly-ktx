@@ -90,7 +90,7 @@ const ThongKeSuDungDichVuPage = () => {
               return (
                 <div>
                   {item?.thongTinDichVu?.tenDichVu} -{" "}
-                  {inputFormat(item?.thongTinDichVu?.donGia)}
+                  {inputFormat(item?.thongTinDichVu?.donGia)} VNĐ
                 </div>
               );
             })}
@@ -109,7 +109,7 @@ const ThongKeSuDungDichVuPage = () => {
       title: "Doanh thu",
       width: 120,
       align: "center",
-      render: (val, rec) => `${inputFormat(rec?.tongDoanhThu)}`,
+      render: (val, rec) => `${inputFormat(rec?.tongDoanhThu)} VNĐ`,
     },
   ];
   useEffect(() => {

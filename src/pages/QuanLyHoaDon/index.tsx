@@ -70,9 +70,9 @@ const QuanLyHoaDonPage = () => {
     {
       title: "Thành tiền",
       dataIndex: "thanhTien",
-      align: "center",
+      align: "right",
       width: 120,
-      render: (val) => inputFormat(val ?? 0),
+      render: (val) => `${inputFormat(val ?? 0)} VNĐ`,
     },
     {
       title: "Trạng thái thanh toán",

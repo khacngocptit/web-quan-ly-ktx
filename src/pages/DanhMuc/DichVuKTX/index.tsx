@@ -35,10 +35,10 @@ const ChucVuPage = () => {
     {
       title: 'Đơn giá',
       dataIndex: 'donGia',
-      align: 'center',
+      align: 'right',
       width: 120,
       sortable: true,
-      render: (val) => inputFormat(val??0) ,
+      render: (val) => `${inputFormat(val??0)} VNĐ` ,
     },
     {
       title: 'Thao tác',
