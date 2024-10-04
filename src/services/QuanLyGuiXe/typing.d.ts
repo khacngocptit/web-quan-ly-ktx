@@ -29,6 +29,7 @@ declare module QuanLyGuiXe {
     };
     thang: number;
     nam: number;
+    thoiGianGuiXe: string;
     createdAt: string;
     updatedAt: string;
     __v: 0;

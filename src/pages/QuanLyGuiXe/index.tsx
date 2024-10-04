@@ -5,6 +5,7 @@ import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
 import ButtonExtend from "@/components/Table/ButtonExtend";
 import { Popconfirm } from "antd";
 import FormThemMoi from "./components/FormThemMoi";
+import moment from "moment";
 
 const QuanLyVeXeThangPage = () => {
   const { getModel, handleEdit, handleView, deleteModel } = useModel(
@@ -35,16 +36,11 @@ const QuanLyVeXeThangPage = () => {
       render: (val, rec) => `${rec?.idXe?.bienSo ?? ""}`,
     },
     {
-      title: "Tháng",
+      title: "Thời gian gửi xe",
       align: "center",
-      dataIndex: "thang",
+      dataIndex: "thoiGianGuiXe",
       width: 120,
-    },
-    {
-      title: "Năm",
-      align: "center",
-      dataIndex: "nam",
-      width: 120,
+      render:(val)=>val?moment(val).format('DD/MM/YYYY'):''
     },
 
     {
